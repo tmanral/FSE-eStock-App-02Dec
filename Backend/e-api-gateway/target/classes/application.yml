@@ -1,0 +1,63 @@
+
+server:
+  port: 5051
+
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  main:
+    web-application-type: reactive
+
+  cloud:
+    gateway:
+      routes:
+        - id: COMPANY-SERVICE
+          uri: lb://COMPANY-SERVICE
+          predicates:
+            - Path=/company/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: COMPANY-SERVICE
+                fallbackuri: forward:/companyServiceFallBack
+
+        - id: STOCK-SERVICE
+          uri: lb://STOCK-SERVICE
+          predicates:
+            - Path=/stock/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: STOCK-SERVICE
+                fallbackuri: forward:/stockServiceFallBack
+
+
+# adding hystrix fallback configs
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+
+# enabling actuator stream endpoint to export metrics for hystrix dashboard
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health
+
+
+# Eureka client properties (as usual)
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost

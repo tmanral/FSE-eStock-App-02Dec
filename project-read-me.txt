@@ -1,0 +1,103 @@
+
+
+
+*Default package contains @SpringBootApplication class.
+*We need to create other packages like entity, controller, service and repository.
+
+
+
+28/11/2022
+	> created company and stock services.
+	> created rest api templates.
+	> git pushed.
+	
+29/11/2022
+	> created eureka server registry.
+	> added eureka dependencies within the client services. 
+	
+
+
+
+_________________________________________________________________________
+__________________________PORTS__________________________________________
+
+
+
+28/11/2022
+	> created company and stock SERVICES.
+	> configured databases.
+	> created rest api templates.
+	> testing
+	> git pushed
+	
+29/11/2022
+	> created EUREKA server registry.
+	> added eureka's client dependencies within the company and stock services in pom.xml file.
+	> configured yml files for all 3 services to enable them for service registry.
+	> testing
+	> added @LoadBalanced to restTemplate bean.
+	
+30/11/2022
+	> created spring cloud API GATWEWAY.
+	> added @EnableEurekaClient
+	> added routes in yml file.
+	> now we can hit through a singe port to access all the services.
+	> testing
+	
+01/12/2022
+	> now implementing HYSTRIX library in API gateway.
+	> add starter-netflix-hystrix dependency from mavenrepo.
+	> add starter-circuitbreaker-reactor-resilience4j from mavenrepo.
+	> ensure starter-gateway, eureka-client, actuator in pom.xml file.
+	> @EnableHystrix
+	> create a controller and create fallback methods for each service.
+	> now under yml file
+		> add circuit breaker filter for each service
+		> add hystrix fallback configs
+		> enable acuator stream endpoints to export metrics for hystrix dashboard(fututre)
+	> testing
+	
+
+02/12/2022
+	> created hystrix DASHBOARD project.
+	> add dashboard annotation
+	> add dashboard configs in yml.
+	> for stream ping http://localhost:5051/actuator/hystrix.stream
+	> for dashboard http://localhost:5052/hystrix/
+	> testing failed
+	> andd web dependency and set web-application-type=reactive (partially worked)
+	
+03/12/2022
+	> push to tmanral/FSE-eStock-App-02Dec
+
+	
+	
+	
+KAFKA
+LOGGING
+
+ASYNC communication??
+
+
+_________________________________________________________________________
+___________________________Notes_________________________________________
+
+
+Group == Package name
+Artifact == Application name
+
+
+Eureka service discovery == service registery
+From eureka server dashboard we can get information of registered services by just using their names.
+
+
+API gateway		--> 	Zuul, Spring Cloud Gateway
+Login and Auth are best implemented at API gateway stage.
+
+
+Library	 		v/s 		Dashboard
+(api gateway)				(separate project)
+Hystrix is a fault tolerence library developed by Netflix. It also provides fallback methods.
+Hystrix dashboard allows us to monitor hystrix metrics in real time.
+
+

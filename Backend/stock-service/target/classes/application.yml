@@ -1,0 +1,25 @@
+
+#Server port
+server:
+  port: 5002
+
+# DB and other additional properties
+spring:
+  data:
+    mongodb:
+      database: cognizant_fse_mongo
+      host: localhost
+      port: 27017
+  application:
+    name: STOCK-SERVICE
+
+
+# Eureka client properties
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost

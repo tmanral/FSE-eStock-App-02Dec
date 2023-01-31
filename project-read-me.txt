@@ -69,18 +69,39 @@ __________________________PORTS__________________________________________
 	
 03/12/2022
 	> push to tmanral/FSE-eStock-App-02Dec
-
 	
-	
-	
-KAFKA
-LOGGING
 
-ASYNC communication??
 
+//--------------------------------------------------------------------------------------------//
+06/12/2022	(not implemented)
+	> created config server app
+	> eureka-client and config-server dependencies, and add annotations
+	> add port and sprinf app name in yml name
+	> now, create one git repo, a yml file, and store all our default configurations here
+	> give repo url to the config server app
+	> now in all other MS we need to talk to this particular config-server SS
+		> enable config client there 
+		> point to that git url
+	> create a bootstarp.yml file to start application context
+
+06/12/2022
+	> Distributed log tracing using zipkin client and sleuth	
+//-------------------------------------------------------------------------------------------//	
+
+
+
+08/12/2022
+	> Angular support
+
+
+
+
+*Angular play around
+*Angular development
+*Login and Authentication
 
 _________________________________________________________________________
-___________________________Notes_________________________________________
+___________________________Notes____Backend______________________________
 
 
 Group == Package name
@@ -99,5 +120,10 @@ Library	 		v/s 		Dashboard
 (api gateway)				(separate project)
 Hystrix is a fault tolerence library developed by Netflix. It also provides fallback methods.
 Hystrix dashboard allows us to monitor hystrix metrics in real time.
+
+
+_________________________________________________________________________
+___________________________Notes____Frontend_____________________________
+
 
 
